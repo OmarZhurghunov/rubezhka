@@ -1,0 +1,26 @@
+Brand.hasMany(Product, {onDelete: 'RESTRICT'})
+Product.belongsTo(Brand)
+Product.belongsToMany(User, {through: Rating, onDelete: 'CASCADE'})
+User.belongsToMany(Product, {through: Rating, onDelete: 'CASCADE'})
+
+Product.hasMany(Rating)
+Rating.belongsTo(Product)
+User.hasMany(Rating)
+Rating.belongsTo(User)
+
+
+Product.hasMany(ProductProp, {as: 'props', onDelete: 'CASCADE'})
+ProductProp.belongsTo(Product)
+
+export {
+    User,
+    Basket,
+    Product,
+    Category,
+    Brand,
+    Rating,
+    BasketProduct,
+    ProductProp,
+    Order,
+    OrderItem
+}
